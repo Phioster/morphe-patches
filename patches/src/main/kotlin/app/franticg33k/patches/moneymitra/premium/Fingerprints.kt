@@ -14,11 +14,11 @@ object EntitlementInfoIsActiveFingerprint : Fingerprint(
 )
 
 /**
- * RevenueCat DateActive.isActive() — used internally to determine if a date-based
- * entitlement is still in its active period. Patching this provides defense-in-depth.
+ * RevenueCat SubscriptionInfo.isActive() — used to check individual subscription
+ * active status. Provides defense-in-depth for subscription-level checks.
  */
-object DateActiveIsActiveFingerprint : Fingerprint(
-    definingClass = "Lcom/revenuecat/purchases/utils/DateActive;",
+object SubscriptionInfoIsActiveFingerprint : Fingerprint(
+    definingClass = "Lcom/revenuecat/purchases/SubscriptionInfo;",
     name = "isActive",
     returnType = "Z",
     parameters = listOf()

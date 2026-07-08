@@ -13,7 +13,7 @@ private const val TRUE_RETURN = """
 val unlockMoneyMitraPremiumPatch = bytecodePatch(
     name = "Unlock Premium",
     description = "Unlocks all premium features in MoneyMitra by forcing RevenueCat's " +
-        "EntitlementInfo.isActive() and DateActive.isActive() to always return true. " +
+        "EntitlementInfo.isActive() to always return true. " +
         "This removes paywalls and enables premium course access without a subscription.",
     default = true
 ) {
@@ -21,6 +21,6 @@ val unlockMoneyMitraPremiumPatch = bytecodePatch(
 
     execute {
         EntitlementInfoIsActiveFingerprint.method.addInstructions(0, TRUE_RETURN)
-        DateActiveIsActiveFingerprint.method.addInstructions(0, TRUE_RETURN)
+        SubscriptionInfoIsActiveFingerprint.method.addInstructions(0, TRUE_RETURN)
     }
 }
