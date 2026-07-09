@@ -1,3 +1,9 @@
+## [1.1.0-dev.4](https://github.com/franticg33k/morphe-patches/compare/v1.1.0-dev.3...v1.1.0-dev.4) (2026-07-09)
+
+### ✨ New Features
+
+* add ForceActiveSubscription binary patch for MoneyMitra libapp.so ([43c2b42](https://github.com/franticg33k/morphe-patches/commit/43c2b4223201849063fc0efac9f39b27469f4dc4))
+
 ## [1.1.0-dev.3](https://github.com/franticg33k/morphe-patches/compare/v1.1.0-dev.2...v1.1.0-dev.3) (2026-07-08)
 
 ### ✨ New Features
