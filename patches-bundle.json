@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-07-09T16:44:26",
-  "description": "## [1.1.2](https://github.com/franticg33k/morphe-patches/compare/v1.1.1...v1.1.2) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* remove MoneyMitra Unlock Premium patch entirely ([c87dcb0](https://github.com/franticg33k/morphe-patches/commit/c87dcb00a936cffaa8240a828d035ec4061be734))",
-  "download_url": "https://github.com/franticg33k/morphe-patches/releases/download/v1.1.2/patches-1.1.2.mpp",
+  "created_at": "2026-07-10T21:46:57",
+  "description": "## [1.2.0-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.1.2...v1.2.0-dev.1) (2026-07-10)\n\n### ✨ New Features\n\n* add Provide Lite premium and license patches ([dd5d8d1](https://github.com/franticg33k/morphe-patches/commit/dd5d8d128195659fee962bb0e0ed6b8b8ca3cbc2))",
+  "download_url": "https://github.com/franticg33k/morphe-patches/releases/download/v1.2.0-dev.1/patches-1.2.0-dev.1.mpp",
   "signature_download_url": "",
-  "version": "1.1.2"
+  "version": "1.2.0-dev.1"
 }
