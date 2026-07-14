@@ -19,3 +19,21 @@ provided that such references:
 - Are accurate, factual, and non-misleading;
 - Do not suggest authorship by the Morphe project; and
 - Appear only in a secondary or descriptive context, not as part of the product or project name.
+
+
+Fork modification notice
+=========================
+
+This repository is a modified fork of "franticg33k's Morphe Patches"
+(https://github.com/franticg33k/morphe-patches), whose author holds the
+original copyright. Distributed under GPLv3.
+
+Modifications by Phioster, 2026-07-14:
+- Removed the patches for all apps other than JellyWatch.
+- Fixed the JellyWatch "Unlock Premium" patch for app version 2.0.REV-1710
+  (re-pinned R8-obfuscated class/field/method names).
+- Added a maintenance note and a manual bundle-build workflow.
+
+To respect the Morphe name restriction above, this fork is named
+"Phioster's JellyWatch Patches" and references Morphe only descriptively
+(for use with Morphe).

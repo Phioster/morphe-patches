@@ -2,12 +2,13 @@ group = "app.franticg33k"
 
 patches {
     about {
-        name = "franticg33k's Morphe Patches"
-        description = "Patches for apps I like"
-        source = "git@github.com:franticg33k/morphe-patches.git"
-        author = "franticg33k"
+        name = "Phioster's JellyWatch Patches"
+        description = "JellyWatch patch, kept working on current app versions. " +
+            "Fork of franticg33k's Morphe Patches, trimmed to JellyWatch only."
+        source = "git@github.com:Phioster/morphe-patches.git"
+        author = "Phioster (fork of franticg33k)"
         contact = "na"
-        website = "na"
+        website = "https://github.com/Phioster/morphe-patches"
         license = "GPLv3"
     }
 }
