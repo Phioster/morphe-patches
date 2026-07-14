@@ -13,7 +13,8 @@ object Constants {
         packageName = "com.jellywatch.app",
         apkFileType = ApkFileType.APK,
         appIconColor = 0x008577,
-    ).including(
-        AppTarget("2.0.REV-1710", false, null),
+        targets = listOf(
+            AppTarget("2.0.REV-1710", false, null),
+        ),
     )
 }
