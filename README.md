@@ -44,9 +44,19 @@ Built for use with [Morphe](https://morphe.software).
 
 ## Usage
 
-Build the bundle (GitHub Actions → "Build bundle" workflow, or `./gradlew
-:patches:buildAndroid`), then import the resulting `.mpp` into Morphe Manager as
-a patch source, select JellyWatch, and apply "Unlock Premium".
+Add this repo as a patch source in Morphe:
+
+```
+https://github.com/Phioster/morphe-patches
+```
+
+Or click: https://morphe.software/add-source?github=Phioster/morphe-patches
+
+Then select JellyWatch and apply "Unlock Premium".
+
+Releases are published by the **Publish release** GitHub Actions workflow
+(`workflow_dispatch`), which builds the `.mpp`, attaches it to a GitHub release,
+and points `patches-bundle.json` at it.
 
 ## Credits
 
