@@ -1,0 +1,66 @@
+name: Publish release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Build and publish bundle
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build bundle and patch list
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew :patches:buildAndroid :patches:generatePatchesList --no-daemon
+
+      - name: Resolve version and asset
+        id: v
+        run: |
+          VERSION=$(grep -E '^version' gradle.properties | sed 's/.*= *//')
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          cp "patches/build/libs/patches-${VERSION}.mpp" "patches-${VERSION}.mpp"
+
+      - name: Update patches-bundle.json manifest
+        run: |
+          VERSION="${{ steps.v.outputs.version }}"
+          URL="https://github.com/${{ github.repository }}/releases/download/v${VERSION}/patches-${VERSION}.mpp"
+          NOW=$(date -u +%Y-%m-%dT%H:%M:%S)
+          cat > patches-bundle.json <<EOF
+          {
+            "created_at": "${NOW}",
+            "description": "Phioster's JellyWatch Patches v${VERSION} — fork of franticg33k's Morphe Patches, trimmed to JellyWatch. Unlock Premium fixed for app 2.0.REV-1710.",
+            "download_url": "${URL}",
+            "signature_download_url": "",
+            "version": "${VERSION}"
+          }
+          EOF
+
+      - name: Commit updated manifests
+        run: |
+          git config user.name "Phioster"
+          git config user.email "marcmarcxx92@gmail.com"
+          git add patches-bundle.json patches-list.json
+          git commit -m "chore: publish v${{ steps.v.outputs.version }} manifests" || echo "nothing to commit"
+          git push origin HEAD:main
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="${{ steps.v.outputs.version }}"
+          gh release create "v${VERSION}" "patches-${VERSION}.mpp" \
+            --title "v${VERSION}" \
+            --notes "Phioster's JellyWatch Patches v${VERSION}. Fork of franticg33k's Morphe Patches, JellyWatch only. Unlock Premium fixed for app 2.0.REV-1710." \
+            || gh release upload "v${VERSION}" "patches-${VERSION}.mpp" --clobber
