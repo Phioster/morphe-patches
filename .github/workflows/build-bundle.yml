@@ -1,0 +1,35 @@
+name: Build bundle
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build patches bundle
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew :patches:buildAndroid --no-daemon
+
+      - name: Upload bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: patches-bundle
+          path: |
+            patches/build/**/*.mpp
+            patches/build/**/*.mpe
+          if-no-files-found: error
