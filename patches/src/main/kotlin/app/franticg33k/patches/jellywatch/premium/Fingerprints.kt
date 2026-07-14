@@ -56,15 +56,20 @@ object PairipHandleErrorFingerprint : Fingerprint(
     parameters = listOf("Lcom/pairip/licensecheck/LicenseCheckException;"),
 )
 
+// NOTE: definingClass is an R8-obfuscated name that changes with every app
+// build. Verified against com.jellywatch.app 2.0.REV-1710 (class "Lyu8;",
+// flow field type "Lnha;", flow setter "Lnha;->p(Object,Object)Z"). If this
+// fails to match, re-derive the class by finding whichever class references
+// the "owned_items" SharedPreferences key.
 object ShopPurchaseManagerIsOwnedFingerprint : Fingerprint(
-    definingClass = "Lav8",
+    definingClass = "Lyu8",
     name = "a",
     returnType = "Z",
     parameters = listOf("Ljava/lang/String;"),
 )
 
 object ShopPurchaseManagerReplaceOwnedFingerprint : Fingerprint(
-    definingClass = "Lav8",
+    definingClass = "Lyu8",
     name = "d",
     returnType = "V",
     parameters = listOf("Ljava/util/Set;"),
